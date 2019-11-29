@@ -5,8 +5,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: setup-gpg
-        uses: olafurpg/setup-gpg@v2
+      - name: Install xmllint
+        run: sudo apt-get install gpg
 
       - name: Set up Go 1.13
         uses: actions/setup-go@v1
