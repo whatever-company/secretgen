@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: first-secret
+  annotations:
+    kustomize.config.k8s.io/behavior: merge
+    kustomize.config.k8s.io/needs-hash: 'true'
+data:
+  foo: YmFy
+  myconfig: ewoJImpzb25rZXkiOiBbCgkJImpzb252YWx1ZTEiLAoJCSJqc29udmFsdWUyIgoJXQp9
+  otherconfig: ewoJImpzb25rZXkiOiBbCgkJImpzb252YWx1ZTEiLAoJCSJqc29udmFsdWUyIgoJXQp9
+---
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: second-secret
+  annotations:
+    kustomize.config.k8s.io/needs-hash: 'true'
+data:
+  foo: YmFy

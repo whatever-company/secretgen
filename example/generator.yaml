@@ -1,0 +1,19 @@
+kind: secretgen
+metadata:
+  name: my-secret-generator
+
+secrets:
+  - name: first-secret
+    behavior: merge
+    files:
+      - key: myconfig
+        file: example/config.json
+      - key: otherconfig
+        tryFiles:
+          - example/no.json
+          - example/config.json
+    envs:
+      - example/secret.env
+  - name: second-secret
+    envs:
+      - example/secret.env
