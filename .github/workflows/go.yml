@@ -1,5 +1,8 @@
 name: Go
-on: [push]
+on:
+  push:
+    tags–ignore:
+      - 'v*.*.*'
 jobs:
   build:
     name: Build
