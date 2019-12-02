@@ -69,7 +69,7 @@ func Generate(c Config) []SecretManifest {
 				if len(line) == 0 || strings.HasPrefix(line, "#") {
 					continue
 				}
-				parts := strings.Split(line, "=")
+				parts := strings.SplitN(line, "=", 2)
 				if len(parts) != 2 {
 					log.Fatalf("Invalid env line %s", line)
 				}

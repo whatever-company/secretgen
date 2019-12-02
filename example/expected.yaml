@@ -7,9 +7,11 @@ metadata:
     kustomize.config.k8s.io/behavior: merge
     kustomize.config.k8s.io/needs-hash: 'true'
 data:
-  foo: YmFy
   myconfig: ewoJImpzb25rZXkiOiBbCgkJImpzb252YWx1ZTEiLAoJCSJqc29udmFsdWUyIgoJXQp9
   otherconfig: ewoJImpzb25rZXkiOiBbCgkJImpzb252YWx1ZTEiLAoJCSJqc29udmFsdWUyIgoJXQp9
+  foo: YmFy
+  multiple: b25lPXR3bz10aHJlZT0=
+  trailing: ZXF1YWw9
 ---
 apiVersion: v1
 kind: Secret
@@ -20,3 +22,5 @@ metadata:
     kustomize.config.k8s.io/needs-hash: 'true'
 data:
   foo: YmFy
+  multiple: b25lPXR3bz10aHJlZT0=
+  trailing: ZXF1YWw9
