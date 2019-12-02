@@ -65,13 +65,13 @@ func Generate(c Config) []SecretManifest {
 			check(err)
 
 			handledLine := false
-			for _, line := range linesRe.Split(string(content), -1) {
+			for i, line := range linesRe.Split(string(content), -1) {
 				if len(line) == 0 || strings.HasPrefix(line, "#") {
 					continue
 				}
 				parts := strings.SplitN(line, "=", 2)
 				if len(parts) != 2 {
-					log.Fatalf("Invalid env line %s", line)
+					log.Fatalf("Invalid format on line %d", i)
 				}
 				secretData[parts[0]] = encode([]byte(parts[1]))
 				handledLine = true
