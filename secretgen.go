@@ -8,6 +8,8 @@ import (
 	"regexp"
 	"strings"
 
+	"go.mozilla.org/sops/v3/cmd/sops/common"
+	"go.mozilla.org/sops/v3/cmd/sops/formats"
 	"go.mozilla.org/sops/v3/decrypt"
 )
 
@@ -52,7 +54,19 @@ type SecretManifest struct {
 	Data       map[string]string `yaml:"data"`
 }
 
-func Generate(c Config) []SecretManifest {
+func decryptData(content []byte, format string, fake bool) ([]byte, error) {
+	if fake {
+		formatFmt := formats.FormatFromString(format)
+		store := common.StoreForFormat(formatFmt)
+		tree, err := store.LoadEncryptedFile(content)
+		check(err)
+		return store.EmitPlainFile(tree.Branches)
+	} else {
+		return decrypt.Data(content, format)
+	}
+}
+
+func Generate(c Config, fake bool) []SecretManifest {
 	secretManifests := []SecretManifest{}
 
 	for _, secret := range c.Secrets {
@@ -61,7 +75,7 @@ func Generate(c Config) []SecretManifest {
 		for _, fPath := range secret.Envs {
 			content, err := ioutil.ReadFile(fPath)
 			check(err)
-			content, err = decrypt.Data(content, "dotenv")
+			content, err = decryptData(content, "dotenv", fake)
 			check(err)
 
 			handledLine := false
@@ -89,7 +103,7 @@ func Generate(c Config) []SecretManifest {
 			if file.File != "" {
 				content, err := ioutil.ReadFile(file.File)
 				check(err)
-				content, err = decrypt.Data(content, modeForFilename(file.File))
+				content, err = decryptData(content, modeForFilename(file.File), fake)
 				check(err)
 				secretData[file.Key] = encode(content)
 			} else {
@@ -99,7 +113,7 @@ func Generate(c Config) []SecretManifest {
 					if err != nil { // skip to next file
 						continue
 					}
-					content, err = decrypt.Data(content, modeForFilename(tryFile))
+					content, err = decryptData(content, modeForFilename(tryFile), fake)
 					check(err)
 					secretData[file.Key] = encode(content)
 					handledAFile = true

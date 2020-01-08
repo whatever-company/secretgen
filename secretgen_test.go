@@ -31,6 +31,31 @@ func TestGenerate(t *testing.T) {
 	yaml.Unmarshal([]byte(configYaml), &config)
 	check(err)
 
-	got := Generate(config)
+	got := Generate(config, false)
+	assert.Equal(t, got, expected)
+}
+
+func TestFakeGenerate(t *testing.T) {
+	var expected []SecretManifest
+	reader, err := os.Open("example/expected-fake.yaml")
+	defer reader.Close()
+	d := yaml.NewDecoder(reader)
+	for {
+		var secret SecretManifest
+		err = d.Decode(&secret)
+		if err == io.EOF {
+			break
+		}
+		check(err)
+		expected = append(expected, secret)
+	}
+
+	var config Config
+	configYaml, err := ioutil.ReadFile("example/generator.yaml")
+	check(err)
+	yaml.Unmarshal([]byte(configYaml), &config)
+	check(err)
+
+	got := Generate(config, true)
 	assert.Equal(t, got, expected)
 }
