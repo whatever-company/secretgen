@@ -220,6 +220,7 @@ github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXf
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
 github.com/stretchr/testify v1.4.0 h1:2E4SXV/wtOkTonXsotYi4li6zVWxYlZuYNCXe9XRJyk=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
+github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 go.mozilla.org/gopgagent v0.0.0-20170926210634-4d7ea76ff71a h1:N7VD+PwpJME2ZfQT8+ejxwA4Ow10IkGbU0MGf94ll8k=
 go.mozilla.org/gopgagent v0.0.0-20170926210634-4d7ea76ff71a/go.mod h1:YDKUvO0b//78PaaEro6CAPH6NqohCmL2Cwju5XI2HoE=
 go.mozilla.org/sops/v3 v3.5.0 h1:GpO9JRZhk6Kc+FVw5Q0vmnvDM6k956ZRh5tbG98T4XI=
