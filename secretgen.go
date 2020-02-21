@@ -29,11 +29,12 @@ type File struct {
 }
 
 type Secret struct {
-	Name      string   `yaml:"name"`
-	Namespace string   `yaml:"namespace"`
-	Envs      []string `yaml:"envs"`
-	Files     []File   `yaml:"files"`
-	Behavior  string   `yaml:"behavior"`
+	Name                  string   `yaml:"name"`
+	Namespace             string   `yaml:"namespace"`
+	Envs                  []string `yaml:"envs"`
+	Files                 []File   `yaml:"files"`
+	Behavior              string   `yaml:"behavior"`
+	DisableNameSuffixHash bool     `yaml:"disableNameSuffixHash"`
 }
 
 type Config struct {
@@ -124,10 +125,18 @@ func Generate(c Config, fake bool) []SecretManifest {
 			}
 		}
 
-		annotations := map[string]string{"kustomize.config.k8s.io/needs-hash": "true"}
+		annotations := map[string]string{}
+
 		if secret.Behavior != "" {
 			annotations["kustomize.config.k8s.io/behavior"] = secret.Behavior
 		}
+
+		if secret.DisableNameSuffixHash {
+			annotations["kustomize.config.k8s.io/needs-hash"] = "false"
+		} else {
+			annotations["kustomize.config.k8s.io/needs-hash"] = "true"
+		}
+
 		manifest := SecretManifest{
 			APIVersion: "v1",
 			Kind:       "Secret",
