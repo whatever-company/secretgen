@@ -9,7 +9,7 @@ require (
 	github.com/hashicorp/golang-lru v0.5.3 // indirect
 	github.com/mattn/go-colorable v0.1.2 // indirect
 	github.com/stretchr/objx v0.2.0 // indirect
-	github.com/stretchr/testify v1.5.1
+	github.com/stretchr/testify v1.6.1
 	go.mozilla.org/sops/v3 v3.5.0
 	golang.org/x/crypto v0.0.0-20190911031432-227b76d455e7 // indirect
 	golang.org/x/net v0.0.0-20190923162816-aa69164e4478 // indirect
