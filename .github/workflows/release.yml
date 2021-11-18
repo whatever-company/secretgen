@@ -13,11 +13,10 @@ jobs:
       - name: Install gpg
         run: sudo apt-get install gpg
 
-      - name: Set up Go 1.16
+      - name: Set up Go
         uses: actions/setup-go@v1
         with:
-          go-version: 1.16
-        id: go
+          go-version: 1.17
 
       - name: Check out code into the Go module directory
         uses: actions/checkout@v1
