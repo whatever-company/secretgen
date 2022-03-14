@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/stretchr/testify v1.7.0
-	go.mozilla.org/sops/v3 v3.7.1
+	go.mozilla.org/sops/v3 v3.7.2
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -28,7 +28,6 @@ require (
 	github.com/blang/semver v3.5.1+incompatible // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/golang-jwt/jwt/v4 v4.1.0 // indirect
@@ -58,7 +57,6 @@ require (
 	github.com/hashicorp/yamux v0.0.0-20211028200310-0bc27b27de87 // indirect
 	github.com/howeyc/gopass v0.0.0-20210920133722-c8aef6fb66ef // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
-	github.com/konsorten/go-windows-terminal-sequences v1.0.3 // indirect
 	github.com/lib/pq v1.10.4 // indirect
 	github.com/mattn/go-colorable v0.1.11 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
@@ -73,7 +71,6 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
-	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/stretchr/objx v0.2.0 // indirect
 	go.mozilla.org/gopgagent v0.0.0-20170926210634-4d7ea76ff71a // indirect
